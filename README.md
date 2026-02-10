@@ -24,6 +24,7 @@ Develop a React-based web application that enables clients to visualize and mana
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
 ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge\&logo=jira\&logoColor=white)
 ![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge\&logo=cypress\&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge\&logo=tailwind-css\&logoColor=white)
 
 ---
 
@@ -93,6 +94,15 @@ End-to-end tests were implemented using **Cypress**.
 
 ---
 
+## Team Members
+
+* **Keylor Barrantes Gómez**  
+* **Juan Pablo Jiménez Vargas**  
+* **Sebastian Marín Fernandez**  
+* **Diego Arce Muñoz**  
+* **Andrea ** 
+---
+
 ## Notes
 
 * This project does not include a backend
@@ -100,5 +110,3 @@ End-to-end tests were implemented using **Cypress**.
 * The application code is written entirely in **English**, as required
 
 ---
-
-© 2026 Veterinaria Web. All rights reserved.
