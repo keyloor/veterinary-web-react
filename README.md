@@ -100,7 +100,7 @@ End-to-end tests were implemented using **Cypress**.
 * **Juan Pablo Jiménez Vargas**  
 * **Sebastian Marín Fernandez**  
 * **Diego Arce Muñoz**  
-* **Andrea ** 
+* **Andrea González Rodríguez** 
 ---
 
 ## Notes
