@@ -85,7 +85,7 @@ End-to-end tests were implemented using **Cypress**.
 3. Run the application:
 
    ```bash
-   npm start
+   npm run dev
    ```
 4. Run E2E tests:
 
