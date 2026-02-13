@@ -8,18 +8,31 @@ import clientProfile from "../../data/clientProfile.json";
  * Data is loaded from a local JSON (single profile).
  */
 export function Profile() {
-  // useState lets you add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
-  const [name, setName] = useState(clientProfile.name);
-  const [email, setEmail] = useState(clientProfile.email);
-  const [phone, setPhone] = useState(clientProfile.phone);
+  // Step 1: Look for any saved profile data in the browser.
+  const savedProfile = localStorage.getItem("clientProfile");
 
-  // UI State for tracking the saving process and showing success feedback via UI
+  // If we found saved data, use it. If not, use the default data from the file.
+  const parsedProfile = savedProfile
+    ? JSON.parse(savedProfile)
+    : clientProfile;
+
+  // useState lets you add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
+  const [name, setName] = useState(parsedProfile.name);
+  const [email, setEmail] = useState(parsedProfile.email);
+  const [phone, setPhone] = useState(parsedProfile.phone);
+
   /**
-   * Handles the profile saving process.
-   * Simple click and save functionality.
+   * Step 2: Save the data.
+   * This puts the name, email, and phone into the browser's memory
+   * so it stays there even if you refresh the page.
    */
   const handleSave = () => {
-    console.log("Profile saved:", { name, email, phone });
+    const profile = { name, email, phone };
+
+    // We have to turn the data into a string to save it.
+    localStorage.setItem("clientProfile", JSON.stringify(profile));
+
+    console.log("Profile saved to localStorage:", profile);
     alert("Profile saved successfully!");
   };
 
