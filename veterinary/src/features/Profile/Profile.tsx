@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, User } from "lucide-react";
+import { Mail, Phone, Save, User } from "lucide-react";
 import clientProfile from "../../data/clientProfile.json";
 
 /**
@@ -8,9 +8,20 @@ import clientProfile from "../../data/clientProfile.json";
  * Data is loaded from a local JSON (single profile).
  */
 export function Profile() {
+  // useState lets you add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
   const [name, setName] = useState(clientProfile.name);
   const [email, setEmail] = useState(clientProfile.email);
   const [phone, setPhone] = useState(clientProfile.phone);
+
+  // UI State for tracking the saving process and showing success feedback via UI
+  /**
+   * Handles the profile saving process.
+   * Simple click and save functionality.
+   */
+  const handleSave = () => {
+    console.log("Profile saved:", { name, email, phone });
+    alert("Profile saved successfully!");
+  };
 
   return (
     <section className="min-h-[calc(100vh-5rem)] bg-gradient-to-b from-slate-50 to-white">
@@ -60,6 +71,13 @@ export function Profile() {
                     </span>
                     <input
                       value={name}
+                      /* 
+                         onChange is a React event handler that implements the "Controlled Component" pattern.
+                         1. It captures the User's input via the SyntheticEvent object (e).
+                         2. 'e.target' refers to this input element.
+                         3. 'e.target.value' is the new text entered by the user.
+                         4. 'setName' updates the React state, which triggers a re-render to show the new value.
+                      */
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
                       placeholder="Your name"
@@ -68,7 +86,6 @@ export function Profile() {
                     />
                   </div>
                 </div>
-
                 {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
@@ -108,6 +125,17 @@ export function Profile() {
                     />
                   </div>
                 </div>
+              </div>
+
+              {/* Simple Save Button */}
+              <div className="mt-10 flex justify-end">
+                <button
+                  onClick={handleSave}
+                  className="flex items-center gap-2 rounded-2xl bg-teal-600 px-8 py-3.5 font-bold text-white shadow-lg shadow-teal-200 transition-all duration-300 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  <Save size={20} />
+                  Save Changes
+                </button>
               </div>
             </div>
           </div>
