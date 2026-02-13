@@ -18,10 +18,10 @@ export function Profile() {
         <div className="max-w-2xl mx-auto">
           <header className="mb-6">
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 text-center">
-              Perfil del Cliente
+              Client Profile
             </h1>
             <p className="mt-2 text-slate-600 text-center">
-              Consulta y edita tu información de contacto registrada en el sistema.
+              View and edit your contact information registered in the system.
             </p>
           </header>
 
@@ -31,12 +31,12 @@ export function Profile() {
               <div className="flex items-center gap-4 mb-8">
                 <img
                   src={clientProfile.photoUrl}
-                  alt="Foto de perfil"
+                  alt="Profile Picture"
                   className="h-20 w-20 rounded-full object-cover border-4 border-white shadow-md"
                 />
 
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-slate-700">Perfil</p>
+                  <p className="text-sm font-semibold text-slate-700">Profile</p>
                   <p className="text-slate-900 font-bold text-lg leading-tight">
                     {name || "Sin nombre"}
                   </p>
@@ -44,7 +44,7 @@ export function Profile() {
                 </div>
 
                 <span className="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 border border-teal-100">
-                  Cliente
+                  Client
                 </span>
               </div>
 
@@ -52,7 +52,7 @@ export function Profile() {
                 {/* Name */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Nombre
+                    Name
                   </label>
                   <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 focus-within:border-teal-300 focus-within:ring-4 focus-within:ring-teal-100 transition">
                     <span className="text-slate-400">
@@ -72,7 +72,7 @@ export function Profile() {
                 {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Correo
+                    Email
                   </label>
                   <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 focus-within:border-teal-300 focus-within:ring-4 focus-within:ring-teal-100 transition">
                     <span className="text-slate-400">
@@ -92,7 +92,7 @@ export function Profile() {
                 {/* Phone */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Teléfono celular
+                    Cellphone number
                   </label>
                   <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 focus-within:border-teal-300 focus-within:ring-4 focus-within:ring-teal-100 transition">
                     <span className="text-slate-400">
@@ -108,12 +108,6 @@ export function Profile() {
                     />
                   </div>
                 </div>
-              </div>
-
-              <div className="mt-8 flex items-center justify-between gap-4">
-                <p className="text-xs text-slate-500">
-                  Campos editables. (Guardar / persistir se implementa luego.)
-                </p>
               </div>
             </div>
           </div>
