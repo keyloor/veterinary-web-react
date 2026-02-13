@@ -31,16 +31,16 @@ export function Profile() {
               <div className="flex items-center gap-4 mb-8">
                 <img
                   src={clientProfile.photoUrl}
-                  alt="Profile Picture"
+                  alt="Profile picture"
                   className="h-20 w-20 rounded-full object-cover border-4 border-white shadow-md"
                 />
 
                 <div className="flex-1">
                   <p className="text-sm font-semibold text-slate-700">Profile</p>
                   <p className="text-slate-900 font-bold text-lg leading-tight">
-                    {name || "Sin nombre"}
+                    {name || "No name"}
                   </p>
-                  <p className="text-slate-500 text-sm">{email || "Sin correo"}</p>
+                  <p className="text-slate-500 text-sm">{email || "No email"}</p>
                 </div>
 
                 <span className="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 border border-teal-100">
@@ -62,7 +62,7 @@ export function Profile() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
-                      placeholder="Tu nombre"
+                      placeholder="Your name"
                       type="text"
                       autoComplete="name"
                     />
@@ -82,7 +82,7 @@ export function Profile() {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       className="w-full bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
-                      placeholder="correo@ejemplo.com"
+                      placeholder="email@example.com"
                       type="email"
                       autoComplete="email"
                     />
