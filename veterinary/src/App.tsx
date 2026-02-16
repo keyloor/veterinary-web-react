@@ -3,6 +3,7 @@ import "./App.css";
 import { Footer } from "./shared/Footer";
 import Header from "./shared/Header";
 import { Home } from "./features/Home/Home";
+import Pets from "./features/pets/Pets";
 import NotFound from "./shared/NotFound";
 
 function App() {
@@ -14,6 +15,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/home" element={<Home />} />
+
+          <Route path="/pets" element={<Pets />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
