@@ -1,5 +1,7 @@
 export interface Appointment {
 
-    id: string;
+    id: number;
     date: string;
+    reason: string;
+    veterinarian?: string;
 }
