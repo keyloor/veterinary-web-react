@@ -20,7 +20,7 @@ export default function Header() {
 
   return (
     //We create the actual header component 
-    <header className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-teal-50 shadow-sm">
+    <header data-cy="header" className="sticky top-0 z-50 w-full bg-white/80 backdrop-blur-md border-b border-teal-50 shadow-sm">
       <div className="container mx-auto px-6 h-20 flex items-center justify-between">
 
         {/* BRAND LOGO SECTION 
