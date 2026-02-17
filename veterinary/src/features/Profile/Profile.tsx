@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Mail, Phone, Save, User } from "lucide-react";
-import clientProfile from "../../data/clientProfile.json";
+import { Mail, Phone, Save, User, Check } from "lucide-react";
+import clientProfile from "../../../public/data/clientProfile.json";
 
 /**
  * Client Profile Screen
@@ -12,14 +12,15 @@ export function Profile() {
   const savedProfile = localStorage.getItem("clientProfile");
 
   // If we found saved data, use it. If not, use the default data from the file.
-  const parsedProfile = savedProfile
-    ? JSON.parse(savedProfile)
-    : clientProfile;
+  const parsedProfile = savedProfile ? JSON.parse(savedProfile) : clientProfile;
 
   // useState lets you add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
   const [name, setName] = useState(parsedProfile.name);
   const [email, setEmail] = useState(parsedProfile.email);
   const [phone, setPhone] = useState(parsedProfile.phone);
+
+  // NEW: controls the "saved" animation state
+  const [saved, setSaved] = useState(false);
 
   /**
    * Step 2: Save the data.
@@ -33,7 +34,12 @@ export function Profile() {
     localStorage.setItem("clientProfile", JSON.stringify(profile));
 
     console.log("Profile saved to localStorage:", profile);
-    alert("Profile saved successfully!");
+
+    // REMOVED: alert("Profile saved successfully!");
+
+    // NEW: trigger button feedback animation
+    setSaved(true);
+    setTimeout(() => setSaved(false), 1200);
   };
 
   return (
@@ -84,13 +90,6 @@ export function Profile() {
                     </span>
                     <input
                       value={name}
-                      /* 
-                         onChange is a React event handler that implements the "Controlled Component" pattern.
-                         1. It captures the User's input via the SyntheticEvent object (e).
-                         2. 'e.target' refers to this input element.
-                         3. 'e.target.value' is the new text entered by the user.
-                         4. 'setName' updates the React state, which triggers a re-render to show the new value.
-                      */
                       onChange={(e) => setName(e.target.value)}
                       className="w-full bg-transparent outline-none text-slate-800 placeholder:text-slate-400"
                       placeholder="Your name"
@@ -99,6 +98,7 @@ export function Profile() {
                     />
                   </div>
                 </div>
+
                 {/* Email */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
@@ -144,10 +144,24 @@ export function Profile() {
               <div className="mt-10 flex justify-end">
                 <button
                   onClick={handleSave}
-                  className="flex items-center gap-2 rounded-2xl bg-teal-600 px-8 py-3.5 font-bold text-white shadow-lg shadow-teal-200 transition-all duration-300 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0"
+                  className={[
+                    "relative rounded-2xl px-8 py-3.5 font-bold text-white shadow-lg transition-all duration-300",
+                    saved
+                      ? "bg-emerald-400 shadow-emerald-200 scale-[1.02]"
+                      : "bg-teal-600 shadow-teal-200 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0",
+                  ].join(" ")}
                 >
-                  <Save size={20} />
-                  Save Changes
+                  {/* This keeps the button width stable (always reserves space for 'Save Changes') */}
+                  <span className="invisible flex items-center gap-2">
+                    <Save size={20} />
+                    Save Changes
+                  </span>
+
+                  {/* This is what the user actually sees, perfectly centered */}
+                  <span className="absolute inset-0 flex items-center justify-center gap-2">
+                    {saved ? <Check size={20} /> : <Save size={20} />}
+                    {saved ? "Saved" : "Save Changes"}
+                  </span>
                 </button>
               </div>
             </div>
