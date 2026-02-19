@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mail, Phone, Save, User, Check } from "lucide-react";
-import clientProfile from "../../../public/data/clientProfile.json";
 
 /**
  * Client Profile Screen
@@ -8,19 +7,47 @@ import clientProfile from "../../../public/data/clientProfile.json";
  * Data is loaded from a local JSON (single profile).
  */
 export function Profile() {
-  // Step 1: Look for any saved profile data in the browser.
-  const savedProfile = localStorage.getItem("clientProfile");
+  // useState lets add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
 
-  // If we found saved data, use it. If not, use the default data from the file.
-  const parsedProfile = savedProfile ? JSON.parse(savedProfile) : clientProfile;
+  // Photo comes from the JSON file (public/data/clientProfile.json)
+  const [photoUrl, setPhotoUrl] = useState("");
 
-  // useState lets you add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
-  const [name, setName] = useState(parsedProfile.name);
-  const [email, setEmail] = useState(parsedProfile.email);
-  const [phone, setPhone] = useState(parsedProfile.phone);
-
-  // NEW: controls the "saved" animation state
+  // NEW: controls the (saved) animation state
   const [saved, setSaved] = useState(false);
+
+  // Load initial data: localStorage first, otherwise fetch JSON from /public
+  useEffect(() => {
+    const savedProfile = localStorage.getItem("clientProfile");
+
+    if (savedProfile) {
+      try {
+        const parsed = JSON.parse(savedProfile);
+        setName(parsed.name ?? "");
+        setEmail(parsed.email ?? "");
+        setPhone(parsed.phone ?? "");
+      } catch (e) {
+        console.error("Failed to parse clientProfile from localStorage:", e);
+      }
+    }
+
+    // Fetch the default profile to get the photo and use it if there's no saved data.
+    fetch("/data/clientProfile.json")
+      .then((r) => r.json())
+      .then((data) => {
+        setPhotoUrl(data.photoUrl ?? "");
+
+        // If there was no localStorage, fill fields from JSON defaults
+        if (!savedProfile) {
+          setName(data.name ?? "");
+          setEmail(data.email ?? "");
+          setPhone(data.phone ?? "");
+        }
+      })
+      .catch((e) => console.error("Failed to load /data/clientProfile.json:", e));
+  }, []);
 
   /**
    * Step 2: Save the data.
@@ -30,14 +57,12 @@ export function Profile() {
   const handleSave = () => {
     const profile = { name, email, phone };
 
-    // We have to turn the data into a string to save it.
+    // Turn the data into a string to save it.
     localStorage.setItem("clientProfile", JSON.stringify(profile));
 
     console.log("Profile saved to localStorage:", profile);
 
-    // REMOVED: alert("Profile saved successfully!");
-
-    // NEW: trigger button feedback animation
+    // trigger button feedback animation
     setSaved(true);
     setTimeout(() => setSaved(false), 1200);
   };
@@ -60,7 +85,7 @@ export function Profile() {
               {/* Top profile row */}
               <div className="flex items-center gap-4 mb-8">
                 <img
-                  src={clientProfile.photoUrl}
+                  src={photoUrl}
                   alt="Profile picture"
                   className="h-20 w-20 rounded-full object-cover border-4 border-white shadow-md"
                 />
@@ -151,13 +176,13 @@ export function Profile() {
                       : "bg-teal-600 shadow-teal-200 hover:bg-teal-700 hover:-translate-y-0.5 active:translate-y-0",
                   ].join(" ")}
                 >
-                  {/* This keeps the button width stable (always reserves space for 'Save Changes') */}
+                  {/* Keeps width stable */}
                   <span className="invisible flex items-center gap-2">
                     <Save size={20} />
                     Save Changes
                   </span>
 
-                  {/* This is what the user actually sees, perfectly centered */}
+                  {/* Visible centered content */}
                   <span className="absolute inset-0 flex items-center justify-center gap-2">
                     {saved ? <Check size={20} /> : <Save size={20} />}
                     {saved ? "Saved" : "Save Changes"}
