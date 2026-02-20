@@ -14,22 +14,85 @@ export function Footer() {
               </div>
 
               <span className="text-xl font-bold text-slate-800">
-                Vet<span className="text-teal-600">Care</span>
-              </span>
+                Vet<span className="text-teal-600">Care</span> </span>
             </div>
 
             <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
-              Plataforma veterinaria moderna para el cuidado y seguimiento de tus mascotas.
+              Comprometidos con cada latido de tu mascota, porque forma parte de tu familia.
             </p>
 
-            <div className="flex gap-3 pt-2 ">
-              <a href="https://www.instagram.com/" target="_blank" className="flex group p-2.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-teal-500 hover:text-white transition-all shadow-sm hover:shadow-md hover:scale-106">
-                <Instagram size={18} className="transition-all group-hover:scale-116"/>
-              </a>
+            <div className="flex gap-4 pt-2">
 
-              <a href="https://www.facebook.com/" target="_blank" className="flex group p-2.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-teal-500 hover:text-white transition-all shadow-sm hover:shadow-md hover:scale-105">
-                <Facebook size={18} className="transition-all group-hover:scale-114"/>
-              </a>
+              <div className="flex gap-4 pt-2">
+
+                <div className="flex gap-4 pt-2">
+
+        
+                  <a href="https://www.instagram.com/" target="_blank"
+                    className="group relative flex items-center justify-center 
+                    w-12 h-12 rounded-full bg-white text-slate-600 
+                    shadow-sm border border-slate-200 transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-xl"
+                  >
+               
+                    <span className="absolute inset-0 rounded-full
+                    ring-0 ring-pink-500/30
+                    group-hover:ring-4
+                    transition-all duration-300" />
+
+                    <Instagram size={20}
+                      className="relative z-10 transition-all duration-300
+                      group-hover:text-pink-600 group-hover:scale-110"
+                    />
+
+                    
+                    <span className="pointer-events-none absolute -top-10 px-3 py-1.5 rounded-lg
+                    bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500
+                    text-white text-xs font-medium opacity-0 translate-y-2
+                    group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-300 whitespace-nowrap shadow-lg">
+                      Instagram
+                    </span>
+                  </a>
+
+                  <a href="https://www.facebook.com/" target="_blank"
+                    className="group relative flex items-center justify-center
+                    w-12 h-12 rounded-full bg-white text-slate-600
+                    shadow-sm border border-slate-200
+                    transition-all duration-300
+                    hover:-translate-y-1 hover:shadow-xl"
+                  >
+               
+                    <span className="absolute inset-0 rounded-full 
+                    ring-0 ring-blue-600/30
+                    group-hover:ring-4
+                    transition-all duration-300" />
+
+                    <Facebook size={20}
+                      className="relative z-10
+                      transition-all duration-300
+                      group-hover:text-blue-600
+                      group-hover:scale-110"
+                    />
+
+            
+                    <span className="pointer-events-none absolute -top-10
+                    px-3 py-1.5 rounded-lg
+                    bg-blue-600
+                    text-white text-xs font-medium
+                    opacity-0 translate-y-2
+                    group-hover:opacity-100 group-hover:translate-y-0
+                    transition-all duration-300
+                    whitespace-nowrap
+                    shadow-lg">
+                      Facebook
+                    </span>
+                  </a>
+
+                </div>
+
+              </div>
+
             </div>
           </div>
 
