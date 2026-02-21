@@ -19,7 +19,6 @@ Develop a React-based web application that enables clients to visualize and mana
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
 ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge\&logo=javascript\&logoColor=F7DF1E)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
-![CSS](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
 ![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge\&logo=jira\&logoColor=white)
@@ -33,7 +32,7 @@ Develop a React-based web application that enables clients to visualize and mana
 
 End-to-end tests were implemented using **Cypress**.
 
-* A minimum of **6 E2E tests** were created
+* **6 E2E tests** were created
 * Each test validates a complete user flow
 * Tests cover all required screens, including Header and Footer
 * Test execution evidence (screenshots/videos) is documented in Jira
@@ -44,20 +43,20 @@ End-to-end tests were implemented using **Cypress**.
 ## Project Management (Jira)
 
 * The project is managed using **Jira Software**
-* A backlog with at least **7 user stories** is defined
+* A backlog with **8 user stories** was defined
 * All user stories follow the format:
 
   * *As a [role], I want [action], so that [benefit]*
 * Each story includes:
 
   * Acceptance criteria
-  * Estimation (Story Points or simple estimation)
+  * Estimation (Story Points)
   * Assigned developer
   * Subtasks
 * Workflow used:
 
   * To Do → In Progress → QA → Done
-* QA evidence (screenshots and comments) is attached to Jira stories
+* QA evidence (screenshots) is attached to Jira stories
 
 ---
 
@@ -97,11 +96,11 @@ End-to-end tests were implemented using **Cypress**.
 
 ## Team Members
 
-* **Keylor Barrantes Gómez**  
-* **Juan Pablo Jiménez Vargas**  
-* **Sebastian Marín Fernandez**  
-* **Diego Arce Muñoz**  
-* **Andrea González Rodríguez** 
+ - **Keylor Barrantes Gómez**  
+ - **Juan Pablo Jiménez Vargas**  
+ - **Sebastian Marín Fernandez**  
+ - **Diego Arce Muñoz**  
+ - **Andrea González Rodríguez** 
 ---
 
 ## Notes
