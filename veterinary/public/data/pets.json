@@ -2,15 +2,15 @@
   {
     "id": 1,
     "name": "Tessa",
-    "species": "Perro",
+    "species": "Dog",
     "breed": "Chihuahua",
     "age": 5,
     "weight": 2.5,
-    "status": "Saludable",
+    "status": "Healthy",
     "vaccines": [
       {
         "id": 1,
-        "name": "Rabia",
+        "name": "Rabies",
         "date": "2024-05-10"
       },
       {
@@ -23,23 +23,23 @@
       {
         "id": 1,
         "date": "2025-01-15",
-        "reason": "Chequeo general",
-        "veterinarian": "Dra. González"
+        "reason": "General checkup",
+        "veterinarian": "Dr. Gonzalez"
       }
     ]
   },
   {
     "id": 2,
     "name": "Sammy",
-    "species": "Perro",
-    "breed": "Salchicha",
+    "species": "Dog",
+    "breed": "Dachshund",
     "age": 3,
     "weight": 6.2,
-    "status": "Saludable",
+    "status": "Healthy",
     "vaccines": [
       {
         "id": 3,
-        "name": "Rabia",
+        "name": "Rabies",
         "date": "2024-03-20"
       }
     ],
@@ -47,7 +47,7 @@
       {
         "id": 2,
         "date": "2025-02-01",
-        "reason": "Vacunación anual",
+        "reason": "Annual vaccination",
         "veterinarian": "Dr. Barrantes"
       }
     ]
@@ -55,33 +55,33 @@
   {
     "id": 3,
     "name": "Jacko",
-    "species": "Perro",
-    "breed": "Mestizo",
+    "species": "Dog",
+    "breed": "Mixed",
     "age": 10,
     "weight": 10,
-    "status": "En tratamiento",
+    "status": "In treatment",
     "vaccines": [],
     "apointments": [
       {
         "id": 3,
         "date": "2025-01-28",
-        "reason": "Problema digestivo",
-        "veterinarian": "Dra. González"
+        "reason": "Digestive problem",
+        "veterinarian": "Dr. Gonzalez"
       }
     ]
   },
   {
     "id": 4,
     "name": "Leo",
-    "species": "Gato",
-    "breed": "Doméstico",
+    "species": "Cat",
+    "breed": "Domestic",
     "age": 9,
     "weight": 4.3,
     "status": "",
     "vaccines": [
       {
         "id": 4,
-        "name": "Triple Felina",
+        "name": "Feline Triple",
         "date": "2024-06-12"
       }
     ],
@@ -89,18 +89,18 @@
   },
   {
     "id": 5,
-    "name": "Patacón",
-    "species": "Perro",
-    "breed": "Mestizo",
+    "name": "Patacon",
+    "species": "Dog",
+    "breed": "Mixed",
     "age": 1,
     "weight": 8.7,
-    "status": "Saludable",
+    "status": "Healthy",
     "vaccines": [],
     "apointments": [
       {
         "id": 5,
         "date": "2025-03-10",
-        "reason": "Desparasitación",
+        "reason": "Deworming",
         "veterinarian": "Dr. Arce"
       }
     ]
@@ -108,46 +108,46 @@
   {
     "id": 6,
     "name": "Milka",
-    "species": "Conejo",
-    "breed": "Enano Holandés",
+    "species": "Rabbit",
+    "breed": "Netherland Dwarf",
     "age": 8,
     "weight": 2.2,
-    "status": "Saludable",
+    "status": "Healthy",
     "vaccines": [],
     "apointments": []
   },
   {
     "id": 7,
     "name": "Nemo",
-    "species": "Pez",
-    "breed": "Pez Payaso",
+    "species": "Fish",
+    "breed": "Clownfish",
     "age": 1,
     "weight": 0.2,
-    "status": "Crítico",
+    "status": "Critical",
     "vaccines": [],
     "apointments": [
       {
         "id": 7,
         "date": "2025-02-10",
-        "reason": "Revisión de acuario",
-        "veterinarian": "Dr. Marín"
+        "reason": "Aquarium checkup",
+        "veterinarian": "Dr. Marin"
       }
     ]
   },
   {
     "id": 8,
     "name": "Plumita",
-    "species": "Ave",
-    "breed": "Periquito",
+    "species": "Bird",
+    "breed": "Parakeet",
     "age": 2,
     "weight": 0.09,
-    "status": "Saludable",
+    "status": "Healthy",
     "vaccines": [],
     "apointments": [
       {
         "id": 8,
         "date": "2025-03-02",
-        "reason": "Chequeo de rutina",
+        "reason": "Routine checkup",
         "veterinarian": "Dr. Jimenez"
       }
     ]

@@ -17,7 +17,7 @@ export default function Pets() {
     if (loading)
         return (
             <div className="min-h-screen flex items-center justify-center">
-                Cargando mascotas...
+                Loading pets...
             </div>
         );
 

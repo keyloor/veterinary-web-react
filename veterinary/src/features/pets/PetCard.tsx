@@ -9,16 +9,15 @@ type Props = {
 
 function getPetIcon(species?: string) {
   switch (species?.toLowerCase()) {
-    case "perro":
+    case "dog":
       return <Dog size={30} />;
-    case "gato":
+    case "cat":
       return <Cat size={30} />;
-    case "pájaro":
-    case "ave":
+    case "bird":
       return <Bird size={30} />;
-    case "pez":
+    case "fish":
       return <Fish size={30} />;
-    case "conejo":
+    case "rabbit":
       return <Rabbit size={30} />;
     default:
       return <PawPrint size={30} />;
@@ -30,28 +29,27 @@ function HealthIndicator({ status }: { status?: string }) {
 
   const config = (() => {
     switch (normalized) {
-      case "saludable":
+      case "healthy":
         return {
-          label: "Saludable",
+          label: "Healthy",
           color: "text-emerald-500",
           bg: "bg-emerald-50",
           scale: [1, 1.1, 1],
           duration: 2,
         };
 
-      case "en tratamiento":
+      case "in treatment":
         return {
-          label: "En tratamiento",
+          label: "In treatment",
           color: "text-amber-500",
           bg: "bg-amber-50",
           scale: [1, 1.2, 1],
           duration: 1.2,
         };
 
-      case "crítico":
-      case "critico":
+      case "critical":
         return {
-          label: "Crítico",
+          label: "Critical",
           color: "text-red-500",
           bg: "bg-red-50",
           scale: [1, 1.3, 1],
@@ -60,7 +58,7 @@ function HealthIndicator({ status }: { status?: string }) {
 
       default:
         return {
-          label: "Sin datos",
+          label: "No data",
           color: "text-slate-400",
           bg: "bg-slate-100",
           scale: [1, 1, 1],
@@ -100,10 +98,9 @@ export default function PetCard({ pet, selected }: Props) {
         shadow-sm
         hover:shadow-xl hover:-translate-y-1
         overflow-hidden
-        ${
-          selected
-            ? "border-teal-500 shadow-lg"
-            : "border-slate-200 hover:border-teal-300"
+        ${selected
+          ? "border-teal-500 shadow-lg"
+          : "border-slate-200 hover:border-teal-300"
         }
       `}
     >
@@ -141,7 +138,7 @@ export default function PetCard({ pet, selected }: Props) {
 
               {pet.age !== undefined && (
                 <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 font-medium">
-                  {pet.age} años
+                  {pet.age} {pet.age === 1 ? 'year' : 'years'}
                 </span>
               )}
             </div>

@@ -8,12 +8,12 @@ export async function getPets(): Promise<Pet[]> {
 
     if (!response.ok) {
         throw new Error(
-            `No se pudo cargar pets.json (status ${response.status})`
+            `Could not load pets.json (status ${response.status})`
         );
     }
 
     const data = await response.json();
-    console.log("Mascotas cargadas", data);
+    console.log("Pets loaded.", data);
 
     return data as Pet[];
 }
