@@ -6,6 +6,7 @@ export interface Pet {
     name: string;
     species: string;
 
+    // The ? symbol indicates that the property is optional.
     breed?: string;
     age?: number;
     weight?: number;

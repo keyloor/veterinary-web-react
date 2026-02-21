@@ -3,10 +3,14 @@ import { PawPrint, Dog, Cat, Bird, Fish, Rabbit, Heart } from "lucide-react";
 import { motion } from "framer-motion";
 
 type Props = {
-  pet: Pet;
-  selected?: boolean;
+  pet: Pet; // The pet data object to display
+  selected?: boolean; // Optional flag to style the card as selected
 };
 
+/**
+ * Helper function to render a specific icon based on the pet's species.
+ * Uses lucide-react icons and fallbacks to a general PawPrint.
+ */
 function getPetIcon(species?: string) {
   switch (species?.toLowerCase()) {
     case "dog":
@@ -24,6 +28,11 @@ function getPetIcon(species?: string) {
   }
 }
 
+/**
+ * HealthIndicator Component
+ * A small pill-shaped indicator that dynamically styles itself based on the pet's health status.
+ * It uses Framer Motion for a heartbeat animation.
+ */
 function HealthIndicator({ status }: { status?: string }) {
   const normalized = status?.toLowerCase();
 
@@ -88,6 +97,11 @@ function HealthIndicator({ status }: { status?: string }) {
   );
 }
 
+/**
+ * PetCard Component
+ * Displays a summary card for a single pet.
+ * Shows the pet's icon, name, species, age, and a customized health indicator.
+ */
 export default function PetCard({ pet, selected }: Props) {
   return (
     <div

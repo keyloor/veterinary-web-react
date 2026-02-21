@@ -4,13 +4,24 @@ import { ArrowLeft, Calendar, Syringe, FileText, Heart, AlertCircle } from 'luci
 import type { Pet } from '../../models/pet.models';
 import { getPetById } from '../../service/pets.service';
 
+/**
+ * PetProfile Component
+ * Renders the detailed view of a single pet, including its summary, vaccines, and appointments.
+ * It uses the 'id' from the URL to fetch the corresponding pet data.
+ */
 export default function PetProfile() {
+  // 1. Extract the 'id' parameter from the current application URL (e.g., /pets/:id)
   const { id } = useParams<{ id: string }>();
+
+  // 2. navigate allows us to programmatically redirect the user to a different route
   const navigate = useNavigate();
+
+  // 3. Local state for the pet data, loading status, and currently active tab
   const [pet, setPet] = useState<Pet | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('resumen');
 
+  // 4. useEffect runs when the component mounts, or when the 'id' changes
   useEffect(() => {
     if (id) {
       getPetById(id).then((data) => {
@@ -20,6 +31,7 @@ export default function PetProfile() {
     }
   }, [id]);
 
+  // 5. Loading and Error states: Render simple messages before showing the actual layout
   if (loading) return <div className="container mx-auto px-6 py-8">Loading...</div>;
   if (!pet) return <div className="container mx-auto px-6 py-8">Pet not found</div>;
 
