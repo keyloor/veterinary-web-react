@@ -4,6 +4,7 @@ import { Footer } from "./shared/Footer";
 import Header from "./shared/Header";
 import { Home } from "./features/Home/Home";
 import Pets from "./features/pets/Pets";
+import { Profile } from "./features/Profile/Profile";
 import NotFound from "./shared/NotFound";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
 
           <Route path="/pets" element={<Pets />} />
 
+          <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
