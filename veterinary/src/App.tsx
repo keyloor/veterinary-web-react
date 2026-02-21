@@ -6,6 +6,7 @@ import { Home } from "./features/Home/Home";
 import Pets from "./features/pets/Pets";
 import { Profile } from "./features/Profile/Profile";
 import NotFound from "./shared/NotFound";
+import PetProfile from "./features/pets/PetProfile";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/home" element={<Home />} />
 
           <Route path="/pets" element={<Pets />} />
+          <Route path="/pets/:id" element={<PetProfile />} />
 
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
