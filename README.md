@@ -1,112 +1,121 @@
-# Veterinary Web React Application
+# 🐾 Veterinary Web React Application
 
-## Description
+<div align="center">
+  <img alt="React" src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img alt="Vite" src="https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E" />
+  <img alt="Tailwind CSS" src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+  <img alt="Cypress" src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" />
+</div>
 
-This project is a web application developed in **React** that allows veterinary clients to view and manage basic information about their pets. The application focuses exclusively on the **client role**, providing a clear, simple, and responsive user experience.
+<br />
 
-This project was developed as part of the course **IF0004 – Desarrollo de Software II**.
+## 📖 Description
 
----
+This project is a modern, responsive web application developed in **React (with TypeScript and Vite)** that allows veterinary clients to conveniently view and manage basic information about their pets. The application focuses exclusively on the **client role**, delivering a streamlined, intuitive, and accessible user experience across all devices.
 
-## Objective
-
-Develop a React-based web application that enables clients to visualize and manage pet-related information through a minimal set of required screens, applying good development practices, version control, and end-to-end (E2E) testing.
-
----
-
-## Technologies
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge\&logo=react\&logoColor=61DAFB)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge\&logo=javascript\&logoColor=F7DF1E)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge\&logo=html5\&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge\&logo=git\&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge\&logo=github\&logoColor=white)
-![Jira](https://img.shields.io/badge/Jira-0052CC?style=for-the-badge\&logo=jira\&logoColor=white)
-![Cypress](https://img.shields.io/badge/Cypress-17202C?style=for-the-badge\&logo=cypress\&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge\&logo=tailwind-css\&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+> **Academic Context:** This project was developed as part of the course **IF0004 – Desarrollo de Software II**.
 
 ---
 
-## E2E Testing
+## 🎯 Objective
 
-End-to-end tests were implemented using **Cypress**.
-
-* **6 E2E tests** were created
-* Each test validates a complete user flow
-* Tests cover all required screens, including Header and Footer
-* Test execution evidence (screenshots/videos) is documented in Jira
-* Tests are executed during development and live during the project defense
+Develop a React-based web application that enables clients to visualize and manage pet-related information through a minimal set of essential screens. The project emphasizes clean code, modern frontend architecture, version control best practices, and rigorous end-to-end (E2E) testing.
 
 ---
 
-## Project Management (Jira)
+## ✨ Features
 
-* The project is managed using **Jira Software**
-* A backlog with **8 user stories** was defined
-* All user stories follow the format:
-
-  * *As a [role], I want [action], so that [benefit]*
-* Each story includes:
-
-  * Acceptance criteria
-  * Estimation (Story Points)
-  * Assigned developer
-  * Subtasks
-* Workflow used:
-
-  * To Do → In Progress → QA → Done
-* QA evidence (screenshots) is attached to Jira stories
+- **Pet Management:** View lists of pets and their detailed profiles.
+- **Client Dashboard:** Clean overview of client information and active pets.
+- **Responsive Navigation:** Accessible routing and layouts (Header, Footer, and side menus) built with React Router.
+- **Modern UI/UX:** Styled with **Tailwind CSS** and enriched with **Framer Motion** animations and **Lucide React** icons.
+- **Quality Assurance:** Comprehensive user flows tested via E2E testing.
 
 ---
 
-## Version Control
+## 🛠️ Tech Stack & Architecture
 
-* Git is used for version control
-* The repository includes:
-
-  * A main branch
-  * Feature branches
-  * Pull Requests with code review
-* Commits represent real progress throughout development
-* The code shown during the defense matches the repository state
+- **Core:** React 19, TypeScript, Vite
+- **Routing:** React Router DOM v7
+- **Styling & UI:** Tailwind CSS v4, Framer Motion, Lucide React
+- **Testing:** Cypress (E2E)
+- **Project Structure:**
+  - The main application code lives inside the `/veterinary` directory.
+  - All data is currently mocked/simulated (no backend integration yet).
 
 ---
 
-## How to Run the Project
+## 🚀 Getting Started
 
-1. Clone the repository
-2. Install dependencies:
+To run the project locally, follow these steps:
 
+### Prerequisites
+
+Ensure you have **Node.js** (v18+ recommended) installed.
+
+### Installation
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/keyloor/veterinary-web-react.git
+   ```
+
+2. **Navigate to the application directory:**
+   ```bash
+   cd veterinary-web-react/veterinary
+   ```
+
+3. **Install dependencies:**
    ```bash
    npm install
    ```
-3. Run the application:
 
+4. **Run the development server:**
    ```bash
    npm run dev
    ```
-4. Run E2E tests:
-
-   ```bash
-   npx cypress open
-   ```
+   *The app will be available at [http://localhost:5173](http://localhost:5173)*
 
 ---
 
-## Team Members
+## 🧪 E2E Testing
 
- - **Keylor Barrantes Gómez**  
- - **Juan Pablo Jiménez Vargas**  
- - **Sebastian Marín Fernandez**  
- - **Diego Arce Muñoz**  
- - **Andrea González Rodríguez** 
+End-to-end testing ensures the application's critical paths function as expected from a user's perspective. 
+
+We use **Cypress** to test the entire application flow:
+* **6 Dedicated E2E tests** covering full user journeys.
+* Validates all required screens (Dashboard, Profiles, Header/Footer navigation).
+* QA evidence is documented within Jira stories.
+
+**To run the tests:**
+Ensure you are inside the `veterinary` folder and run:
+```bash
+# This will start the server and open the Cypress test runner concurrently
+npm run cypress
+```
+
 ---
 
-## Notes
+## 📋 Project Management (Jira) & Version Control
 
-* This project does not include a backend
-* All data is simulated
-* The application code is written entirely in **English**, as required
+- **Agile Development:** Managed via **Jira Software** using a Kanban-style workflow (`To Do → In Progress → QA → Done`).
+- **User Stories:** The backlog consists of 8 precisely defined user stories with acceptance criteria and Story Points.
+- **Git Flow:** Active use of feature branches and Pull Requests for code reviews. Commits reflect iterative, real-world development progress.
 
 ---
+
+## 👥 Team Members
+
+- **Keylor Barrantes Gómez**
+- **Juan Pablo Jiménez Vargas**
+- **Sebastian Marín Fernandez**
+- **Diego Arce Muñoz**
+- **Andrea González Rodríguez**
+
+---
+
+## 📌 Notes
+
+- This project is purely a **frontend application**; there is no attached database or backend server.
+- The application code, variables, and comments are written entirely in **English**, maintaining international development standards.
