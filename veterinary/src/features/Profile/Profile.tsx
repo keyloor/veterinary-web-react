@@ -8,9 +8,21 @@ import { Mail, Phone, Save, User, Check } from "lucide-react";
  */
 export function Profile() {
   // useState lets add local state to a functional component, so input fields can update and display the edited profile values in real time as the user types.
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
+  const [name, setName] = useState(() => {
+    const saved = localStorage.getItem("clientProfile");
+    if (!saved) return "";
+    try { return JSON.parse(saved).name ?? ""; } catch { return ""; }
+  });
+  const [email, setEmail] = useState(() => {
+    const saved = localStorage.getItem("clientProfile");
+    if (!saved) return "";
+    try { return JSON.parse(saved).email ?? ""; } catch { return ""; }
+  });
+  const [phone, setPhone] = useState(() => {
+    const saved = localStorage.getItem("clientProfile");
+    if (!saved) return "";
+    try { return JSON.parse(saved).phone ?? ""; } catch { return ""; }
+  });
 
   // Photo comes from the JSON file (public/data/clientProfile.json)
   const [photoUrl, setPhotoUrl] = useState("");
@@ -22,17 +34,6 @@ export function Profile() {
   useEffect(() => {
     const savedProfile = localStorage.getItem("clientProfile");
 
-    if (savedProfile) {
-      try {
-        const parsed = JSON.parse(savedProfile);
-        setName(parsed.name ?? "");
-        setEmail(parsed.email ?? "");
-        setPhone(parsed.phone ?? "");
-      } catch (e) {
-        console.error("Failed to parse clientProfile from localStorage:", e);
-      }
-    }
-
     // Fetch the default profile to get the photo and use it if there's no saved data.
     fetch("/data/clientProfile.json")
       .then((r) => r.json())
@@ -41,9 +42,9 @@ export function Profile() {
 
         // If there was no localStorage, fill fields from JSON defaults
         if (!savedProfile) {
-          setName(data.name ?? "");
-          setEmail(data.email ?? "");
-          setPhone(data.phone ?? "");
+          setName((prevName: string) => prevName || (data.name ?? ""));
+          setEmail((prevEmail: string) => prevEmail || (data.email ?? ""));
+          setPhone((prevPhone: string) => prevPhone || (data.phone ?? ""));
         }
       })
       .catch((e) => console.error("Failed to load /data/clientProfile.json:", e));
