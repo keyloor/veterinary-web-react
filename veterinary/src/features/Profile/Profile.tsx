@@ -27,7 +27,7 @@ export function Profile() {
   // Photo comes from the JSON file (public/data/clientProfile.json)
   const [photoUrl, setPhotoUrl] = useState("");
 
-  // NEW: controls the (saved) animation state
+  // Controls the (saved) animation state
   const [saved, setSaved] = useState(false);
 
   // Load initial data: localStorage first, otherwise fetch JSON from /public
@@ -51,7 +51,6 @@ export function Profile() {
   }, []);
 
   /**
-   * Step 2: Save the data.
    * This puts the name, email, and phone into the browser's memory
    * so it stays there even if you refresh the page.
    */
