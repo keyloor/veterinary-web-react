@@ -27,7 +27,7 @@ export function Profile() {
   // Photo comes from the JSON file (public/data/clientProfile.json)
   const [photoUrl, setPhotoUrl] = useState("");
 
-  // NEW: controls the (saved) animation state
+  // Controls the (saved) animation state
   const [saved, setSaved] = useState(false);
 
   // Load initial data: localStorage first, otherwise fetch JSON from /public
@@ -51,7 +51,6 @@ export function Profile() {
   }, []);
 
   /**
-   * Step 2: Save the data.
    * This puts the name, email, and phone into the browser's memory
    * so it stays there even if you refresh the page.
    */
@@ -60,8 +59,6 @@ export function Profile() {
 
     // Turn the data into a string to save it.
     localStorage.setItem("clientProfile", JSON.stringify(profile));
-
-    console.log("Profile saved to localStorage:", profile);
 
     // trigger button feedback animation
     setSaved(true);
@@ -74,10 +71,10 @@ export function Profile() {
         <div className="max-w-2xl mx-auto">
           <header className="mb-6">
             <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 text-center">
-              Client Profile
+              Perfil de Cliente
             </h1>
             <p className="mt-2 text-slate-600 text-center">
-              View and edit your contact information registered in the system.
+              Ver y editar tu información de contacto registrado en el sistema.
             </p>
           </header>
 
@@ -100,7 +97,7 @@ export function Profile() {
                 </div>
 
                 <span className="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-xs font-semibold text-teal-700 border border-teal-100">
-                  Client
+                  Cliente
                 </span>
               </div>
 
@@ -108,7 +105,7 @@ export function Profile() {
                 {/* Name */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Name
+                    Nombre Completo
                   </label>
                   <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 focus-within:border-teal-300 focus-within:ring-4 focus-within:ring-teal-100 transition">
                     <span className="text-slate-400">
@@ -148,7 +145,7 @@ export function Profile() {
                 {/* Phone */}
                 <div>
                   <label className="block text-sm font-semibold text-slate-700 mb-2">
-                    Cellphone number
+                    Número Telefónico
                   </label>
                   <div className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-3 focus-within:border-teal-300 focus-within:ring-4 focus-within:ring-teal-100 transition">
                     <span className="text-slate-400">
@@ -180,13 +177,13 @@ export function Profile() {
                   {/* Keeps width stable */}
                   <span className="invisible flex items-center gap-2">
                     <Save size={20} />
-                    Save Changes
+                    Guardar Cambios
                   </span>
 
                   {/* Visible centered content */}
                   <span className="absolute inset-0 flex items-center justify-center gap-2">
                     {saved ? <Check size={20} /> : <Save size={20} />}
-                    {saved ? "Saved" : "Save Changes"}
+                    {saved ? "Guardado" : "Guardar Cambios"}
                   </span>
                 </button>
               </div>

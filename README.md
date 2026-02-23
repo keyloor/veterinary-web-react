@@ -41,7 +41,6 @@ Develop a React-based web application that enables clients to visualize and mana
 - **Styling & UI:** Tailwind CSS v4, Framer Motion, Lucide React
 - **Testing:** Cypress (E2E)
 - **Project Structure:**
-  - The main application code lives inside the `/veterinary` directory.
   - All data is currently mocked/simulated (no backend integration yet).
 
 ---
@@ -63,7 +62,7 @@ Ensure you have **Node.js** (v18+ recommended) installed.
 
 2. **Navigate to the application directory:**
    ```bash
-   cd veterinary-web-react/veterinary
+   cd veterinary-web-react
    ```
 
 3. **Install dependencies:**
@@ -89,7 +88,7 @@ We use **Cypress** to test the entire application flow:
 * QA evidence is documented within Jira stories.
 
 **To run the tests:**
-Ensure you are inside the `veterinary` folder and run:
+Ensure you are in the project root directory and run:
 ```bash
 # This will start the server and open the Cypress test runner concurrently
 npm run cypress
