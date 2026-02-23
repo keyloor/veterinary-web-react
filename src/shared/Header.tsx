@@ -32,7 +32,7 @@ export default function Header() {
           className="flex items-center gap-3 text-2xl font-extrabold text-slate-800 transition-all hover:scale-105 active:scale-95"
         >
           <div className="bg-gradient-to-br from-teal-400 to-teal-600 p-2 rounded-xl text-white shadow-lg shadow-teal-200/50">
-            <Dog size={28} />
+            <PawPrint size={28} />
           </div>
           <span className="tracking-tight">
             Vet<span className="bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent">Care</span>

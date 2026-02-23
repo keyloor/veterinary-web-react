@@ -104,7 +104,7 @@ export default function Home() {
 
             <Link
               to="/profile"
-              className="flex items-center justify-between p-6 rounded-3xl border border-teal-500 text-teal-600 font-bold hover:bg-teal-50 transition-all"
+              className="flex items-center justify-between p-6 rounded-3xl border border-teal-500 text-teal-600 font-bold shadow-lg hover:scale-[1.02] transition-all"
             >
               <span className="flex items-center gap-3">
                 <User size={24} />
