@@ -3,7 +3,7 @@ import type { Pet } from "../models/pet.models";
 /**
  * Base URL where the mock JSON data for pets is located.
  */
-const PETS_URL = "../../data/pets.json";
+const PETS_URL = "/data/pets.json";
 
 /**
  * Fetches the entire list of pets from the local JSON file.
