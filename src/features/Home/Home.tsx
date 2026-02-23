@@ -39,7 +39,7 @@ export default function Home() {
             {/* IMAGE */}
             <div className="flex-1 flex justify-center">
               <img
-                src="https://s3-us-west-1.amazonaws.com/assets.wagwalkingweb.com/media/daily_wag/blog_articles/body/1723045767.4127371/shih-tzu.jpg"
+                src="https://i.redd.it/ddlmwqmg52m41.jpg"
                 alt="Happy dog"
                 className="rounded-3xl shadow-lg object-cover h-[250px] w-full max-w-sm hover:scale-105 transition-all duration-300"
               />
