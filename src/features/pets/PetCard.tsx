@@ -13,15 +13,16 @@ type Props = {
  */
 function getPetIcon(species?: string) {
   switch (species?.toLowerCase()) {
-    case "dog":
+    case "perro":
       return <Dog size={30} />;
-    case "cat":
+    case "gato":
       return <Cat size={30} />;
-    case "bird":
+    case "pájaro":
+    case "ave":
       return <Bird size={30} />;
-    case "fish":
+    case "pez":
       return <Fish size={30} />;
-    case "rabbit":
+    case "conejo":
       return <Rabbit size={30} />;
     default:
       return <PawPrint size={30} />;
@@ -38,27 +39,27 @@ function HealthIndicator({ status }: { status?: string }) {
 
   const config = (() => {
     switch (normalized) {
-      case "healthy":
+      case "saludable":
         return {
-          label: "Healthy",
+          label: "Saludable",
           color: "text-emerald-500",
           bg: "bg-emerald-50",
           scale: [1, 1.1, 1],
           duration: 2,
         };
 
-      case "in treatment":
+      case "en tratamiento":
         return {
-          label: "In treatment",
+          label: "En tratamiento",
           color: "text-amber-500",
           bg: "bg-amber-50",
           scale: [1, 1.2, 1],
           duration: 1.2,
         };
 
-      case "critical":
+      case "crítico":
         return {
-          label: "Critical",
+          label: "Crítico",
           color: "text-red-500",
           bg: "bg-red-50",
           scale: [1, 1.3, 1],
@@ -67,7 +68,7 @@ function HealthIndicator({ status }: { status?: string }) {
 
       default:
         return {
-          label: "No data",
+          label: "Sin datos",
           color: "text-slate-400",
           bg: "bg-slate-100",
           scale: [1, 1, 1],
@@ -152,7 +153,7 @@ export default function PetCard({ pet, selected }: Props) {
 
               {pet.age !== undefined && (
                 <span className="px-3 py-1 rounded-full bg-teal-50 text-teal-700 font-medium">
-                  {pet.age} {pet.age === 1 ? 'year' : 'years'}
+                  {pet.age} {pet.age === 1 ? 'año' : 'años'}
                 </span>
               )}
             </div>

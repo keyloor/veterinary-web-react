@@ -2,52 +2,41 @@
   {
     "id": 1,
     "name": "Tessa",
-    "species": "Dog",
+    "species": "Perro",
     "breed": "Chihuahua",
     "age": 5,
     "weight": 2.5,
-    "status": "Healthy",
+    "status": "Saludable",
+    "allergies": "Polen",
     "vaccines": [
-      {
-        "id": 1,
-        "name": "Rabies",
-        "date": "2024-05-10"
-      },
-      {
-        "id": 2,
-        "name": "Parvovirus",
-        "date": "2024-05-10"
-      }
+      { "id": 1, "name": "Rabia", "date": "2024-05-10" },
+      { "id": 2, "name": "Parvovirus", "date": "2024-05-10" }
     ],
     "apointments": [
       {
         "id": 1,
         "date": "2025-01-15",
-        "reason": "General checkup",
-        "veterinarian": "Dr. Gonzalez"
+        "reason": "Chequeo general",
+        "veterinarian": "Dra. González"
       }
     ]
   },
   {
     "id": 2,
     "name": "Sammy",
-    "species": "Dog",
-    "breed": "Dachshund",
+    "species": "Perro",
+    "breed": "Salchicha",
     "age": 3,
     "weight": 6.2,
-    "status": "Healthy",
+    "status": "Saludable",
     "vaccines": [
-      {
-        "id": 3,
-        "name": "Rabies",
-        "date": "2024-03-20"
-      }
+      { "id": 3, "name": "Rabia", "date": "2024-03-20" }
     ],
     "apointments": [
       {
         "id": 2,
         "date": "2025-02-01",
-        "reason": "Annual vaccination",
+        "reason": "Vacunación anual",
         "veterinarian": "Dr. Barrantes"
       }
     ]
@@ -55,52 +44,49 @@
   {
     "id": 3,
     "name": "Jacko",
-    "species": "Dog",
-    "breed": "Mixed",
+    "species": "Perro",
+    "breed": "Mestizo",
     "age": 10,
     "weight": 10,
-    "status": "In treatment",
+    "status": "En tratamiento",
+    "allergies": "Proteína de pollo",
     "vaccines": [],
     "apointments": [
       {
         "id": 3,
         "date": "2025-01-28",
-        "reason": "Digestive problem",
-        "veterinarian": "Dr. Gonzalez"
+        "reason": "Problema digestivo",
+        "veterinarian": "Dra. González"
       }
     ]
   },
   {
     "id": 4,
     "name": "Leo",
-    "species": "Cat",
-    "breed": "Domestic",
+    "species": "Gato",
+    "breed": "Doméstico",
     "age": 9,
     "weight": 4.3,
     "status": "",
     "vaccines": [
-      {
-        "id": 4,
-        "name": "Feline Triple",
-        "date": "2024-06-12"
-      }
+      { "id": 4, "name": "Triple Felina", "date": "2024-06-12" }
     ],
     "apointments": []
   },
   {
     "id": 5,
-    "name": "Patacon",
-    "species": "Dog",
-    "breed": "Mixed",
+    "name": "Patacón",
+    "species": "Perro",
+    "breed": "Mestizo",
     "age": 1,
     "weight": 8.7,
-    "status": "Healthy",
+    "status": "Saludable",
     "vaccines": [],
     "apointments": [
       {
         "id": 5,
         "date": "2025-03-10",
-        "reason": "Deworming",
+        "reason": "Desparasitación",
         "veterinarian": "Dr. Arce"
       }
     ]
@@ -108,46 +94,47 @@
   {
     "id": 6,
     "name": "Milka",
-    "species": "Rabbit",
-    "breed": "Netherland Dwarf",
+    "species": "Conejo",
+    "breed": "Enano Holandés",
     "age": 8,
     "weight": 2.2,
-    "status": "Healthy",
+    "status": "Saludable",
     "vaccines": [],
     "apointments": []
   },
   {
     "id": 7,
     "name": "Nemo",
-    "species": "Fish",
-    "breed": "Clownfish",
+    "species": "Pez",
+    "breed": "Pez Payaso",
     "age": 1,
     "weight": 0.2,
-    "status": "Critical",
+    "status": "Crítico",
     "vaccines": [],
     "apointments": [
       {
         "id": 7,
         "date": "2025-02-10",
-        "reason": "Aquarium checkup",
-        "veterinarian": "Dr. Marin"
+        "reason": "Revisión de acuario",
+        "veterinarian": "Dr. Marín"
       }
     ]
   },
   {
     "id": 8,
     "name": "Plumita",
-    "species": "Bird",
-    "breed": "Parakeet",
+    "species": "Ave",
+    "breed": "Periquito",
     "age": 2,
     "weight": 0.09,
-    "status": "Healthy",
+    "status": "Saludable",
+    "allergies": "Semillas con colorantes",
     "vaccines": [],
     "apointments": [
       {
         "id": 8,
         "date": "2025-03-02",
-        "reason": "Routine checkup",
+        "reason": "Chequeo de rutina",
         "veterinarian": "Dr. Jimenez"
       }
     ]
