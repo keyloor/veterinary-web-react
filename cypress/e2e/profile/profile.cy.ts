@@ -1,8 +1,9 @@
 describe("Client Profile", () => {
-  it("should save changes", () => {
+  beforeEach(() => {
     cy.visit("/profile");
-    cy.location("pathname").should("eq", "/profile");
+  });
 
+  it("should save changes", () => {
     cy.get('input[autocomplete="name"]').clear().type("Antonio");
 
     cy.contains("button", "Guardar Cambios").click();

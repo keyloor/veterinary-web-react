@@ -112,6 +112,7 @@ export default function PetProfile() {
 
       <button
         onClick={() => navigate('/pets')}
+        data-cy="back-button"
         className="flex items-center gap-2 text-slate-600 hover:text-teal-600 mb-6 transition-colors"
       >
         <ArrowLeft size={20} />
@@ -129,7 +130,7 @@ export default function PetProfile() {
           </div>
 
           <div>
-            <h1 className="text-4xl font-bold">{pet.name}</h1>
+            <h1 data-cy="pet-name" className="text-4xl font-bold">{pet.name}</h1>
 
             <p className="text-white/90">
               {pet.species} • {pet.breed || 'Breed not specified'} •{' '}
@@ -148,6 +149,7 @@ export default function PetProfile() {
           {/* Summary Tab */}
           <button
             onClick={() => setActiveTab('resumen')}
+            data-cy="tab-resumen"
             className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'resumen'
               ? 'text-teal-600 border-b-2 border-teal-600'
               : 'text-slate-500 hover:text-slate-700'
@@ -160,6 +162,7 @@ export default function PetProfile() {
           {/* Vaccines Tab */}
           <button
             onClick={() => setActiveTab('vacunas')}
+            data-cy="tab-vacunas"
             className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'vacunas'
               ? 'text-teal-600 border-b-2 border-teal-600'
               : 'text-slate-500 hover:text-slate-700'
@@ -172,6 +175,7 @@ export default function PetProfile() {
           {/* Appointments Tab */}
           <button
             onClick={() => setActiveTab('consultas')}
+            data-cy="tab-consultas"
             className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'consultas'
               ? 'text-teal-600 border-b-2 border-teal-600'
               : 'text-slate-500 hover:text-slate-700'
