@@ -1,27 +1,31 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Calendar, Syringe, FileText, Heart, AlertCircle } from 'lucide-react';
+import {
+  ArrowLeft,
+  Calendar,
+  Syringe,
+  FileText,
+  Heart,
+  AlertCircle,
+  Dog,
+  Cat,
+  Rabbit,
+  Bird,
+  Fish
+} from 'lucide-react';
+
 import type { Pet } from '../../models/pet.models';
 import { getPetById } from '../../service/pets.service';
 
-/**
- * PetProfile Component
- * Renders the detailed view of a single pet, including its summary, vaccines, and appointments.
- * It uses the 'id' from the URL to fetch the corresponding pet data.
- */
 export default function PetProfile() {
-  // 1. Extract the 'id' parameter from the current application URL (e.g., /pets/:id)
-  const { id } = useParams<{ id: string }>();
 
-  // 2. navigate allows us to programmatically redirect the user to a different route
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  // 3. Local state for the pet data, loading status, and currently active tab
   const [pet, setPet] = useState<Pet | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('resumen');
 
-  // 4. useEffect runs when the component mounts, or when the 'id' changes
   useEffect(() => {
     if (id) {
       getPetById(id).then((data) => {
@@ -31,13 +35,59 @@ export default function PetProfile() {
     }
   }, [id]);
 
-  // 5. Loading and Error states: Render simple messages before showing the actual layout
   if (loading) return <div className="container mx-auto px-6 py-8">Loading...</div>;
   if (!pet) return <div className="container mx-auto px-6 py-8">Pet not found</div>;
 
+  const getSpeciesIcon = () => {
+    switch (pet.species?.toLowerCase()) {
+      case 'perro':
+        return <Dog size={48} />;
+      case 'gato':
+        return <Cat size={48} />;
+      case 'conejo':
+        return <Rabbit size={48} />;
+      case 'ave':
+        return <Bird size={48} />;
+      case 'pez':
+        return <Fish size={48} />;
+      default:
+        return <Heart size={48} />;
+    }
+  };
+
+  const status = pet.status?.toLowerCase();
+
+  const statusStyles = () => {
+    if (status?.includes('saludable'))
+      return {
+        card: 'bg-emerald-50 border-emerald-100 text-emerald-700',
+        text: 'text-emerald-800'
+      };
+
+    if (status?.includes('tratamiento'))
+      return {
+        card: 'bg-amber-50 border-amber-100 text-amber-700',
+        text: 'text-amber-800'
+      };
+
+    if (status?.includes('crítico') || status?.includes('critico'))
+      return {
+        card: 'bg-red-50 border-red-100 text-red-700',
+        text: 'text-red-800'
+      };
+
+    return {
+      card: 'bg-slate-50 border-slate-100 text-slate-700',
+      text: 'text-slate-800'
+    };
+  };
+
+  const styles = statusStyles();
+
   return (
     <div className="container mx-auto px-6 py-8">
-      {/* Back button */}
+
+  
       <button
         onClick={() => navigate('/pets')}
         className="flex items-center gap-2 text-slate-600 hover:text-teal-600 mb-6 transition-colors"
@@ -46,109 +96,158 @@ export default function PetProfile() {
         <span>Back to my pets</span>
       </button>
 
-      {/* Header */}
-      <div className="bg-gradient-to-r from-teal-600 to-emerald-600 rounded-2xl p-8 text-white mb-8">
-        <h1 className="text-4xl font-bold mb-2">{pet.name}</h1>
-        <p className="text-xl text-white/90">
-          {pet.species} • {pet.breed || 'Breed not specified'} • {pet.age} {pet.age === 1 ? 'year' : 'years'}
-        </p>
+     
+      <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl p-8 text-white mb-8">
+
+        <div className="flex items-center gap-4 mb-2">
+
+          <div className="bg-white/20 backdrop-blur p-3 rounded-xl">
+            {getSpeciesIcon()}
+          </div>
+
+          <div>
+            <h1 className="text-4xl font-bold">{pet.name}</h1>
+
+            <p className="text-white/90">
+              {pet.species} • {pet.breed || 'Breed not specified'} •{' '}
+              {pet.age ?? '—'} {pet.age === 1 ? 'año' : 'años'}
+            </p>
+          </div>
+
+        </div>
+
       </div>
 
-      {/* Tabs */}
+      {/* TABS */}
       <div className="border-b border-slate-200 mb-6">
         <div className="flex gap-6">
+
           <button
             onClick={() => setActiveTab('resumen')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'resumen'
-              ? 'text-teal-600 border-b-2 border-teal-600'
-              : 'text-slate-500 hover:text-slate-700'
-              }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
+              activeTab === 'resumen'
+                ? 'text-teal-600 border-b-2 border-teal-600'
+                : 'text-slate-500 hover:text-slate-700'
+            }`}
           >
             <FileText size={18} />
-            Summary
+            Resumen
           </button>
+
           <button
             onClick={() => setActiveTab('vacunas')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'vacunas'
-              ? 'text-teal-600 border-b-2 border-teal-600'
-              : 'text-slate-500 hover:text-slate-700'
-              }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
+              activeTab === 'vacunas'
+                ? 'text-teal-600 border-b-2 border-teal-600'
+                : 'text-slate-500 hover:text-slate-700'
+            }`}
           >
             <Syringe size={18} />
-            Vaccines ({pet.vaccines?.length || 0})
+            Vacunas ({pet.vaccines?.length || 0})
           </button>
+
           <button
             onClick={() => setActiveTab('consultas')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'consultas'
-              ? 'text-teal-600 border-b-2 border-teal-600'
-              : 'text-slate-500 hover:text-slate-700'
-              }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
+              activeTab === 'consultas'
+                ? 'text-teal-600 border-b-2 border-teal-600'
+                : 'text-slate-500 hover:text-slate-700'
+            }`}
           >
             <Calendar size={18} />
-            Appointments ({pet.apointments?.length || 0})
+            Citas ({pet.apointments?.length || 0})
           </button>
+
         </div>
       </div>
 
-      {/* Content */}
+  
       <div className="bg-white rounded-xl border border-slate-200 p-6">
-        {/* SUMMARY TAB */}
+
+        {/* SUMMARY */}
         {activeTab === 'resumen' && (
           <div className="space-y-6">
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Species</p>
+                <p className="text-sm text-slate-500 mb-1">Especie</p>
                 <p className="font-semibold text-lg">{pet.species}</p>
               </div>
+
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Breed</p>
+                <p className="text-sm text-slate-500 mb-1">Raza</p>
                 <p className="font-semibold text-lg">{pet.breed || '—'}</p>
               </div>
+
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Age</p>
-                <p className="font-semibold text-lg">{pet.age} {pet.age === 1 ? 'year' : 'years'}</p>
+                <p className="text-sm text-slate-500 mb-1">Edad</p>
+                <p className="font-semibold text-lg">
+                  {pet.age ?? '—'} {pet.age === 1 ? 'year' : 'years'}
+                </p>
               </div>
+
               <div className="bg-slate-50 p-4 rounded-lg">
-                <p className="text-sm text-slate-500 mb-1">Weight</p>
-                <p className="font-semibold text-lg">{pet.weight ? `${pet.weight} kg` : '—'}</p>
+                <p className="text-sm text-slate-500 mb-1">Peso</p>
+                <p className="font-semibold text-lg">
+                  {pet.weight ? `${pet.weight} kg` : '—'}
+                </p>
               </div>
+
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-              <div className="bg-teal-50 p-4 rounded-lg border border-teal-100">
-                <div className="flex items-center gap-2 text-teal-700 mb-2">
+
+            
+              <div className={`p-4 rounded-lg border ${styles.card}`}>
+                <div className="flex items-center gap-2 mb-2">
                   <Heart size={18} />
-                  <span className="font-medium">Status</span>
+                  <span className="font-medium">Estado</span>
                 </div>
-                <p className="text-teal-800">{pet.status || 'Not specified'}</p>
+
+                <p className={styles.text}>
+                  {pet.status || 'Not specified'}
+                </p>
               </div>
+
+              {/* ALLERGIES */}
               <div className="bg-amber-50 p-4 rounded-lg border border-amber-100">
                 <div className="flex items-center gap-2 text-amber-700 mb-2">
                   <AlertCircle size={18} />
-                  <span className="font-medium">Allergies</span>
+                  <span className="font-medium">Alergias</span>
                 </div>
-                <p className="text-amber-800">{pet.allergies || 'None'}</p>
+
+                <p className="text-amber-800">
+                  {pet.allergies || 'None'}
+                </p>
               </div>
+
             </div>
+
           </div>
         )}
 
-        {/* VACCINES TAB */}
+        {/* VACCINES */}
         {activeTab === 'vacunas' && (
           <div>
-            <h3 className="text-lg font-semibold mb-4">Vaccine History</h3>
+            <h3 className="text-lg font-semibold mb-4">Historial de vacunas</h3>
+
             {pet.vaccines && pet.vaccines.length > 0 ? (
               <div className="space-y-3">
+
                 {pet.vaccines.map((vaccine) => (
-                  <div key={vaccine.id} className="flex justify-between items-center p-4 bg-slate-50 rounded-lg">
-                    <div>
-                      <p className="font-medium">{vaccine.name}</p>
-                    </div>
+                  <div
+                    key={vaccine.id}
+                    className="flex justify-between items-center p-4 bg-slate-50 rounded-lg"
+                  >
+                    <p className="font-medium">{vaccine.name}</p>
+
                     <p className="text-slate-500">
                       {new Date(vaccine.date).toLocaleDateString('en-US')}
                     </p>
                   </div>
                 ))}
+
               </div>
             ) : (
               <p className="text-slate-500">No vaccines registered</p>
@@ -156,29 +255,39 @@ export default function PetProfile() {
           </div>
         )}
 
-        {/* APPOINTMENTS TAB */}
+        {/* APPOINTMENTS */}
         {activeTab === 'consultas' && (
           <div>
-            <h3 className="text-lg font-semibold mb-4">Appointment History</h3>
+            <h3 className="text-lg font-semibold mb-4">Historial de citas</h3>
+
             {pet.apointments && pet.apointments.length > 0 ? (
               <div className="space-y-4">
+
                 {pet.apointments.map((appointment) => (
                   <div key={appointment.id} className="p-4 bg-slate-50 rounded-lg">
+
                     <div className="flex justify-between items-start mb-2">
                       <p className="font-medium">{appointment.reason}</p>
+
                       <p className="text-sm text-slate-500">
                         {new Date(appointment.date).toLocaleDateString('en-US')}
                       </p>
                     </div>
-                    <p className="text-slate-600">Veterinarian: {appointment.veterinarian}</p>
+
+                    <p className="text-slate-600">
+                      Veterinario: {appointment.veterinarian}
+                    </p>
+
                   </div>
                 ))}
+
               </div>
             ) : (
               <p className="text-slate-500">No appointments registered</p>
             )}
           </div>
         )}
+
       </div>
     </div>
   );
