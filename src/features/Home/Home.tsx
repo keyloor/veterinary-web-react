@@ -84,7 +84,7 @@ export default function Home() {
                 group-hover:translate-x-1
               "
             >
-              <h1 className="text-4xl font-extrabold text-slate-800 mb-3 flex flex-wrap items-center gap-3">
+              <h1 data-cy="welcome-title" className="text-4xl font-extrabold text-slate-800 mb-3 flex flex-wrap items-center gap-3">
 
                 <span>¡Hola,</span>
 
@@ -169,7 +169,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <p className="text-3xl font-extrabold text-slate-800">
+            <p data-cy="pet-count" className="text-3xl font-extrabold text-slate-800">
               {totalPets}
             </p>
           </div>
@@ -184,7 +184,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <p className="text-lg font-semibold text-slate-800">
+            <p data-cy="next-appointment" className="text-lg font-semibold text-slate-800">
               {nextAppointmentPet
                 ? `${nextAppointmentPet.name} (${nextAppointmentPet.species}) - ${nextAppointment}`
                 : nextAppointment}
@@ -203,6 +203,7 @@ export default function Home() {
 
             <Link
               to="/pets"
+              data-cy="link-pets"
               className="
                 group relative overflow-hidden
                 flex items-center justify-between
@@ -232,6 +233,7 @@ export default function Home() {
 
             <Link
               to="/profile"
+              data-cy="link-profile"
               className="
                 group relative overflow-hidden
                 flex items-center justify-between
