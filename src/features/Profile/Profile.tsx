@@ -13,11 +13,13 @@ export function Profile() {
     if (!saved) return "";
     try { return JSON.parse(saved).name ?? ""; } catch { return ""; }
   });
+
   const [email, setEmail] = useState(() => {
     const saved = localStorage.getItem("clientProfile");
     if (!saved) return "";
     try { return JSON.parse(saved).email ?? ""; } catch { return ""; }
   });
+
   const [phone, setPhone] = useState(() => {
     const saved = localStorage.getItem("clientProfile");
     if (!saved) return "";

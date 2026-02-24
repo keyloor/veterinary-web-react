@@ -2,9 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { Footer } from "./shared/Footer";
 import Header from "./shared/Header";
-import Home from "./features/Home/Home";
+import Home from "./features/home/Home";
 import Pets from "./features/pets/Pets";
-import { Profile } from "./features/Profile/Profile";
+import { Profile } from "./features/profile/Profile";
 import NotFound from "./shared/NotFound";
 import PetProfile from "./features/pets/PetProfile";
 

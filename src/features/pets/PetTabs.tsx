@@ -1,6 +1,10 @@
 import { FileText, Syringe, Calendar } from 'lucide-react';
 import type { TabConfig, PetTabsProps } from '../../models/tabs.models';
 
+/**
+ * List of navigation tabs with their respective IDs, labels, and icons.
+ * This array defines the structure and available sections for the pet profile.
+ */
 const tabs: TabConfig[] = [
   { id: 'resumen', label: 'Resumen', icon: <FileText size={18} /> },
   { id: 'vacunas', label: 'Vacunas', icon: <Syringe size={18} /> },
@@ -11,9 +15,6 @@ const tabs: TabConfig[] = [
  * PetTabs Component
  * Renders a row of clickable tabs to switch between different sections of a pet's profile.
  * Highlights the active tab dynamically based on the current state.
- *
- * @param {string} activeTab - The currently selected tab's ID.
- * @param {(tabId: string) => void} onTabChange - Callback function triggered when a tab is clicked.
  */
 export default function PetTabs({ activeTab, onTabChange }: PetTabsProps) {
   return (

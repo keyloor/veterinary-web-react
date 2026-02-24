@@ -17,15 +17,27 @@ import {
 import type { Pet } from '../../models/pet.models';
 import { getPetById } from '../../service/pets.service';
 
+/**
+ * PetProfile Component
+ * Displays the full profile of a specific pet, including details, 
+ * vaccine history, and clinical appointments.
+ * It uses a tab-based navigation to switch between different sections.
+ */
 export default function PetProfile() {
 
+  // Extract the pet ID from the URL parameters
   const { id } = useParams<{ id: string }>();
+  // Hook for programmatic navigation (e.g., going back to the pet list)
   const navigate = useNavigate();
 
+  // State to store the pet's full information
   const [pet, setPet] = useState<Pet | null>(null);
+  // State to handle the loading view
   const [loading, setLoading] = useState(true);
+  // State to manage the currently active tab ('resumen', 'vacunas', 'consultas')
   const [activeTab, setActiveTab] = useState('resumen');
 
+  // Fetch pet data from the service when the component mounts or the ID changes
   useEffect(() => {
     if (id) {
       getPetById(id).then((data) => {
@@ -35,9 +47,15 @@ export default function PetProfile() {
     }
   }, [id]);
 
+  // Loading state placeholder
   if (loading) return <div className="container mx-auto px-6 py-8">Loading...</div>;
+  // Error state placeholder if the pet isn't found
   if (!pet) return <div className="container mx-auto px-6 py-8">Pet not found</div>;
 
+  /**
+   * Helper function to return the appropriate Lucide icon based on the pet species.
+   * Defaults to a Heart icon if the species is unknown.
+   */
   const getSpeciesIcon = () => {
     switch (pet.species?.toLowerCase()) {
       case 'perro':
@@ -57,6 +75,10 @@ export default function PetProfile() {
 
   const status = pet.status?.toLowerCase();
 
+  /**
+   * Determine visual styles based on the pet's health status.
+   * Returns Tailwind classes for the card background, border, and text colors.
+   */
   const statusStyles = () => {
     if (status?.includes('saludable'))
       return {
@@ -87,7 +109,7 @@ export default function PetProfile() {
   return (
     <div className="container mx-auto px-6 py-8">
 
-  
+
       <button
         onClick={() => navigate('/pets')}
         className="flex items-center gap-2 text-slate-600 hover:text-teal-600 mb-6 transition-colors"
@@ -96,7 +118,8 @@ export default function PetProfile() {
         <span>Back to my pets</span>
       </button>
 
-     
+
+      {/* Hero Header Section with Pet Basic Info */}
       <div className="bg-gradient-to-r from-teal-500 to-cyan-600 rounded-2xl p-8 text-white mb-8">
 
         <div className="flex items-center gap-4 mb-2">
@@ -122,37 +145,37 @@ export default function PetProfile() {
       <div className="border-b border-slate-200 mb-6">
         <div className="flex gap-6">
 
+          {/* Summary Tab */}
           <button
             onClick={() => setActiveTab('resumen')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
-              activeTab === 'resumen'
-                ? 'text-teal-600 border-b-2 border-teal-600'
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'resumen'
+              ? 'text-teal-600 border-b-2 border-teal-600'
+              : 'text-slate-500 hover:text-slate-700'
+              }`}
           >
             <FileText size={18} />
             Resumen
           </button>
 
+          {/* Vaccines Tab */}
           <button
             onClick={() => setActiveTab('vacunas')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
-              activeTab === 'vacunas'
-                ? 'text-teal-600 border-b-2 border-teal-600'
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'vacunas'
+              ? 'text-teal-600 border-b-2 border-teal-600'
+              : 'text-slate-500 hover:text-slate-700'
+              }`}
           >
             <Syringe size={18} />
             Vacunas ({pet.vaccines?.length || 0})
           </button>
 
+          {/* Appointments Tab */}
           <button
             onClick={() => setActiveTab('consultas')}
-            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${
-              activeTab === 'consultas'
-                ? 'text-teal-600 border-b-2 border-teal-600'
-                : 'text-slate-500 hover:text-slate-700'
-            }`}
+            className={`pb-3 px-1 font-medium flex items-center gap-2 transition-colors ${activeTab === 'consultas'
+              ? 'text-teal-600 border-b-2 border-teal-600'
+              : 'text-slate-500 hover:text-slate-700'
+              }`}
           >
             <Calendar size={18} />
             Citas ({pet.apointments?.length || 0})
@@ -161,7 +184,7 @@ export default function PetProfile() {
         </div>
       </div>
 
-  
+
       <div className="bg-white rounded-xl border border-slate-200 p-6">
 
         {/* SUMMARY */}
@@ -198,7 +221,7 @@ export default function PetProfile() {
 
             <div className="grid grid-cols-2 gap-4">
 
-            
+
               <div className={`p-4 rounded-lg border ${styles.card}`}>
                 <div className="flex items-center gap-2 mb-2">
                   <Heart size={18} />

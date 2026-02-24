@@ -4,14 +4,26 @@ import { PawPrint, CalendarCheck, User, Dog, Cat } from "lucide-react";
 import { getPets } from "../../service/pets.service";
 import type { Pet } from "../../models/pet.models";
 
+/**
+ * Home Component
+ * The main landing page for the user after logging in.
+ * Shows a summary of the client's pets, the next appointment, 
+ * and quick access links to other sections of the app.
+ */
 export default function Home() {
+  // Total number of pets registered to this client
   const [totalPets, setTotalPets] = useState(0);
+  // Name of the client, loaded from localStorage
   const [clientName, setClientName] = useState("");
+  // Mock data for the next appointment date/time
   const nextAppointment = "15 de marzo de 2026 - 3:00 PM";
+  // Basic info of the pet that has the next appointment
   const [nextAppointmentPet, setNextAppointmentPet] = useState<Pick<Pet, "name" | "species"> | null>(null);
 
+  // State to control a subtle "waving" animation for icons
   const [wave, setWave] = useState(false);
 
+  // Load the list of pets and find if there's a scheduled appointment (mocked for 'Jacko')
   useEffect(() => {
     getPets()
       .then((pets) => {
@@ -25,6 +37,7 @@ export default function Home() {
       .catch((err) => console.error("Error fetching pets:", err));
   }, []);
 
+  // Retrieve client information from localStorage to personalize the greeting
   useEffect(() => {
     const savedProfile = localStorage.getItem("clientProfile");
     if (!savedProfile) return;
@@ -33,11 +46,12 @@ export default function Home() {
       const parsed = JSON.parse(savedProfile);
       setClientName(parsed?.name ?? "");
     } catch {
-      // si el JSON está corrupto, no rompe Home
+      // If JSON is corrupt, avoid breaking the page
       setClientName("");
     }
   }, []);
 
+  // Interval to toggle the wave animation every 1.2 seconds
   useEffect(() => {
     const interval = setInterval(() => {
       setWave((prev) => !prev);
@@ -49,8 +63,7 @@ export default function Home() {
   return (
     <div className="w-full flex flex-col py-16">
       <div className="container mx-auto px-6 flex-1">
-
-
+        {/* Welcome Hero Section: Salutes the user and shows a dynamic icon animation */}
         <section className="mb-12">
           <div
             className="
@@ -143,6 +156,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Stats Section: Quick glance at the count of pets and next appointment details */}
         <section className="grid md:grid-cols-2 gap-8 mb-12">
 
           <div className="p-6 rounded-3xl bg-white shadow-md hover:shadow-xl transition-all hover:-translate-y-1">
@@ -176,10 +190,9 @@ export default function Home() {
                 : nextAppointment}
             </p>
           </div>
-
         </section>
 
-
+        {/* Quick Links Section: Easy navigation to the main areas of the application */}
         <section>
           <h2 className="text-2xl font-bold text-slate-800 mb-6">
             Accesos Rápidos
