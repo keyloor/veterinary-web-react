@@ -1,19 +1,5 @@
-import React from 'react';
 import { FileText, Syringe, Calendar } from 'lucide-react';
-
-/**
- * Configuration schema for each tab in the PetTabs component.
- */
-interface TabConfig {
-  id: string; // Unique identifier for the tab (e.g., 'resumen', 'vacunas')
-  label: string; // The display name of the tab
-  icon: React.ReactNode; // The Lucide React icon element
-}
-
-interface PetTabsProps {
-  activeTab: string;
-  onTabChange: (tabId: string) => void;
-}
+import type { TabConfig, PetTabsProps } from '../../models/tabs.models';
 
 const tabs: TabConfig[] = [
   { id: 'resumen', label: 'Resumen', icon: <FileText size={18} /> },
