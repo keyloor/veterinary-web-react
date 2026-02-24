@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 //imported icons are from lucide-react
-import { Dog, Home, PawPrint, User, Menu, X } from 'lucide-react';
+import {Home, PawPrint, User, Menu, X } from 'lucide-react';
 
 /**
  * Header Component
