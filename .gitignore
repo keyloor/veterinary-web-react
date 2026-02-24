@@ -36,3 +36,5 @@ cypress/downloads
 .env.development.local
 .env.test.local
 .env.production.local
+.vite/deps/_metadata.json
+.vite/deps/package.json

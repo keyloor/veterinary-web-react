@@ -37,18 +37,37 @@ export default function Home() {
       .catch((err) => console.error("Error fetching pets:", err));
   }, []);
 
-  // Retrieve client information from localStorage to personalize the greeting
+  // Retrieve client information from localStorage or clientProfile.json to personalize the greeting
   useEffect(() => {
-    const savedProfile = localStorage.getItem("clientProfile");
-    if (!savedProfile) return;
+    const loadClientName = async () => {
+      // Read from Local Storage
+      const savedProfile = localStorage.getItem("clientProfile");
+      if (savedProfile) {
+        try {
+          const parsed = JSON.parse(savedProfile);
+          const storedName = parsed?.name ?? "";
+          if (storedName) {
+            setClientName(storedName);
+            return;
+          }
+        } catch {
+          // If it's in blank, read JSON
+        }
+      }
 
-    try {
-      const parsed = JSON.parse(savedProfile);
-      setClientName(parsed?.name ?? "");
-    } catch {
-      // If JSON is corrupt, avoid breaking the page
-      setClientName("");
-    }
+      // Read from JSON
+      try {
+        const res = await fetch("/data/clientProfile.json");
+        if (!res.ok) return;
+
+        const json = await res.json();
+        setClientName(json?.name ?? "");
+      } catch {
+        setClientName("");
+      }
+    };
+
+    loadClientName();
   }, []);
 
   // Interval to toggle the wave animation every 1.2 seconds
